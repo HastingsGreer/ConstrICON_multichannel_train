@@ -20,15 +20,15 @@ import icon_registration.itk_wrapper
 from train_knee import make_net
 
 def get_model():
-    input_shape = [1, 1, 105, 280, 135]
+    input_shape = [1, 4, 140, 140, 140]
     net = make_net(input_shape)
     from os.path import exists
-    weights_location = "network_weights/network_weights_86100"
+    weights_location = "network_weights/network_weights_27000"
     if not exists(weights_location):
         print("Downloading pretrained model")
         import urllib.request
         import os
-        download_path = "https://github.com/uncbiag/mouse_brain_translucence/releases/download/constricon_weights/network_weights_86100"
+        download_path = "https://github.com/HastingsGreer/ConstrICON_multichannel_train/releases/download/weights/network_weights_27000"
         os.makedirs("network_weights/", exist_ok=True)
         urllib.request.urlretrieve(download_path, weights_location)
     trained_weights = torch.load(weights_location, map_location=torch.device("cpu"))
@@ -40,7 +40,7 @@ def get_model():
 def preprocess(image):
     image = itk.CastImageFilter[type(image), itk.Image[itk.F, 3]].New()(image)
     max_ = np.max(np.array(image))
-    image = itk.shift_scale_image_filter(image, shift=0., scale = .9 / max_)
+    image = itk.shift_scale_image_filter(image, shift=0., scale = 1 / max_)
     
     return image
 
