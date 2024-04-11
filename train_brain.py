@@ -51,8 +51,8 @@ def make_batch(dataset):
     image = image / torch.max(image)
     return image
 
-
-def make_net(input_shape = [1, 1, 140, 140, 140], lmbda=5):
+input_shape = [1, 1, 140, 140, 140]
+def make_net(lmbda=5):
 
     net = multiscale_constr_model.FirstTransform(
         multiscale_constr_model.TwoStepInverseConsistent(
