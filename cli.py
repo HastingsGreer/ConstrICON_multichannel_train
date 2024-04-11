@@ -17,11 +17,10 @@ import icon_registration.itk_wrapper
 
 
 
-from train_knee import make_net
+from train_brain import make_net
 
 def get_model():
-    input_shape = [1, 4, 140, 140, 140]
-    net = make_net(input_shape)
+    net = make_net()
     from os.path import exists
     weights_location = "network_weights/network_weights_27000"
     if not exists(weights_location):
