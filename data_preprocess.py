@@ -6,7 +6,7 @@ import tqdm
 
 output = []
 
-for pth in tqdm.tqdm(glob.glob("data/degree_powers_normalized_dipy/degree_power_images/*")):
+for pth in tqdm.tqdm(sorted(glob.glob("data/degree_powers_normalized_dipy/degree_power_images/*"))[:-10]):
     print(pth)
     img = itk.imread(pth)
     img = np.array(img)
