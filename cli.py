@@ -67,7 +67,7 @@ if __name__ == "__main__":
     parser.add_argument("--warped_moving_out", default=None)
     parser.add_argument("--spacing_debug", action='store_true')
     parser.add_argument("--io_iterations", required=False,
-                         default="None", help="The number of IO iterations. Default is 50. Set to 'None' to disable IO.")
+                         default="None", help="The number of IO iterations. Default is None.")
 
     args = parser.parse_args()
 
